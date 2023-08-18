@@ -13,7 +13,8 @@ const port = process.env.PORT || 1000
 
 //Project Routes
 const AuthRouter = require('./server/routes/AuthRoute');
-
+const CategRouter = require('./server/routes/CategRoute')
+const ProductRouter = require('./server/routes/ProductRoute')
 //MongoDB Connection
 mongodb_Connection();
 
@@ -25,6 +26,8 @@ app.use(cors());
 
 //Routers Middleware 
 app.use("/api", AuthRouter);
+app.use("/category", CategRouter);
+app.use("/product/", ProductRouter);
 
 //Error Middleware
 app.use(errorHandler);

@@ -1,12 +1,12 @@
-const Product = require('../models/Product');
+const Category = require('../models/Category');
 const ErrorResponse = require('../utils/ErrorResponse');
 
-module.exports.createAProduct = async(req, res, next) => {
+module.exports.createACategory = async(req, res, next) => {
     try {
-        const newProduct = await Product.create(req.body);
+        const newCategory = await Category.create(req.body);
         res.status(201).json({
             success: true,
-            newProduct
+            newCategory
         })
     }
     catch(error) {
