@@ -15,3 +15,17 @@ module.exports.createACategory = async(req, res, next) => {
         next(error)
     }
 }
+
+module.exports.allCategories = async(req, res, next) => {
+    try {
+        const categories = await Category.find();
+        res.status(200).json({
+            success: true,
+            categories
+        })
+    }
+    catch(error) {
+        console.log(error)
+        next(error)
+    }
+}

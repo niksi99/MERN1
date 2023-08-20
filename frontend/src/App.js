@@ -9,6 +9,8 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
+import AdminCreateProduct from './pages/admin/AdminCreateProduct'
+
 const App = () => {
   return (
     <>
@@ -18,6 +20,7 @@ const App = () => {
           <Route exact path="/signup" component={SignUp}></Route>
           <Route exact path="/login" component={LogIn}></Route>
           <PrivateRoute exact path="/user/profile" component={UserDashboard}></PrivateRoute>
+          <PrivateRoute exact path="/admin/createProduct" component={AdminCreateProduct}></PrivateRoute>
         </BrowserRouter>
     </>
   )
