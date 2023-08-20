@@ -14,3 +14,17 @@ module.exports.createAProduct = async(req, res, next) => {
         next(error)
     }
 }
+
+module.exports.allProducts = async(req, res, next) => {
+    try {
+        const products = await Product.find().populate('category');
+        res.status(200).json({
+            success: true,
+            products
+        })
+    }
+    catch(error) {
+        console.log(error)
+        next(error)
+    }
+}

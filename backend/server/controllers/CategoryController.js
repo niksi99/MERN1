@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+const Product = require('../models/Product');
 const ErrorResponse = require('../utils/ErrorResponse');
 
 module.exports.createACategory = async(req, res, next) => {
