@@ -62,7 +62,7 @@ const AdminCreateProduct = () => {
         <div>
             <Header/>
             <h2>Create Product</h2>
-            <form onSubmit={submitForm}>
+            <form>
                 <div>
                     <label htmlFor="nameProduct">Name: </label>
                     <input onChange={(event) => setName(event.target.value)} type="text" id="nameProduct" value={name}/>
@@ -80,9 +80,9 @@ const AdminCreateProduct = () => {
                     <select id="categProduct" onChange={(event) => setCategory(event.target.value)} name="cars" value={category}>
                         <option value="">Choose cateogry</option>
                         {
-                            categories && categories.map(categ => {
+                            categories && categories.map(categ => (
                                 <option key={categ._id} value={categ._id}> {categ.name} </option>
-                            })
+                            ))
                         }
                     </select>
                 </div>
@@ -91,7 +91,7 @@ const AdminCreateProduct = () => {
                     <input type="file" id="imgProduct" name="image"/>
                 </div>
                 <img onChange={handleImage} src={image} alt="" />
-                <button type="submit">Create</button>
+                <button type="submit" onClick={submitForm}>Create</button>
             </form>
         </div>
     </>
