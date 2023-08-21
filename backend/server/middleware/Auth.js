@@ -24,3 +24,10 @@ exports.isAuthenticated = async (req, res, next) => {
         return next(new ErrorResponse(400), error.message)
     }
 }
+
+exports.isAdminRole = (req, res, next) => {
+    if(req.user.role === 0) {
+        return next(new ErrorResponse(401, "You mush be an Admin"));
+    }
+    next();
+}

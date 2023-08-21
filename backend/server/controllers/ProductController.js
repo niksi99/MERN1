@@ -16,11 +16,22 @@ module.exports.createAProduct = async(req, res, next) => {
 }
 
 module.exports.allProducts = async(req, res, next) => {
+
+    //pagonation
+    const pageSize = 2
+    const page = Number[req.query.pageNumber] || 1
+    const count = await Product.find({}).estimatedDocumentCount();
+    console.log(``)
     try {
-        const products = await Product.find().populate('category');
+        const products = await Product.find()
+                                      .populate('category')
+                                      .skip(pageSize * (page-1))
+                                      .limit(pageSize);
         res.status(200).json({
             success: true,
-            products
+            products,
+            page,
+            pages: Math.ceil(count / pageSize)
         })
     }
     catch(error) {
